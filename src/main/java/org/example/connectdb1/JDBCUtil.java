@@ -1,9 +1,4 @@
-package org.example;
-
-/**
- * Hello world!
- */
-
+package org.example.connectdb1;
 
 import com.mysql.cj.jdbc.Driver;
 
@@ -11,29 +6,26 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class App {
+public class JDBCUtil {
     public static Connection getConnection() {
         Connection connection = null;
-        Driver driver = null;
         String server = "localhost";
         String port = "33063";
-        String db_name = "nhasach";
+        String db_name = "java_test";
 
         try {
-            // register Driver
+            // register driver
+            Driver driver = new Driver();
             DriverManager.registerDriver(driver);
 
-            // cac thong so
+            // Cac thong so
             String url = "jdbc:mysql://" + server + ":" + port + "/" + db_name;
             String username = "root";
             String password = "Trang123456a@";
 
-            // ket noi
+            // tao ket noi
             connection = DriverManager.getConnection(url, username, password);
-
-            // kiem tra ket noi
             System.out.println(connection.getMetaData().getDatabaseProductName());
-
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -42,19 +34,13 @@ public class App {
         return connection;
     }
 
-    public static void disConnect(Connection c) {
+    public static void disConnect (Connection connection) {
         try {
-            if (c != null) {
-                c.close();
+            if (connection != null) {
+                connection.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        Connection connection = getConnection();
-        disConnect(connection);
-    }
 }
-

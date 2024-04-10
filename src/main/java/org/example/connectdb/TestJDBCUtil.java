@@ -28,7 +28,6 @@ public class TestJDBCUtil {
                 System.out.println("Them du lieu that bai");
             }
 
-
             // Bước 5: Ngắt kết nối
             JDBCUtil.closeConnection(connection);
         } catch (SQLException e) {

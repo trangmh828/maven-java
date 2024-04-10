@@ -9,7 +9,8 @@ public class Customers {
     private String birthday;
     private String created_at;
 
-    public Customers(int id, String name, String phone, int point, String address, String birthday, String created_at) {
+    public Customers(int id, String name, String phone, int point,
+                     String address, String birthday, String created_at) {
         this.id = id;
         this.name = name;
         this.phone = phone;

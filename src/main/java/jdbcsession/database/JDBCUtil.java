@@ -1,9 +1,4 @@
-package org.example;
-
-/**
- * Hello world!
- */
-
+package jdbcsession.database;
 
 import com.mysql.cj.jdbc.Driver;
 
@@ -11,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class App {
+public class JDBCUtil {
     public static Connection getConnection() {
         Connection connection = null;
         Driver driver = null;
@@ -21,6 +16,7 @@ public class App {
 
         try {
             // register Driver
+            driver = new Driver();
             DriverManager.registerDriver(driver);
 
             // cac thong so
@@ -30,15 +26,9 @@ public class App {
 
             // ket noi
             connection = DriverManager.getConnection(url, username, password);
-
-            // kiem tra ket noi
-            System.out.println(connection.getMetaData().getDatabaseProductName());
-
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         return connection;
     }
 
@@ -51,10 +41,4 @@ public class App {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        Connection connection = getConnection();
-        disConnect(connection);
-    }
 }
-

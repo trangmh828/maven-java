@@ -2,9 +2,13 @@ package jdbcsession.test;
 
 import jdbcsession.database.JDBCUtil;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
+import java.util.UUID;
 
 public class TestJDBCUtil {
     public static void main(String[] args) {
@@ -17,7 +21,7 @@ public class TestJDBCUtil {
 
             // Buoc 3: Cau lenh sql
             String sql = "INSERT INTO `nhasach`.`khachhang` (`id`, `hoVaTen`, `ngaySinh`, `diaChi`) " +
-                    "VALUES ('3', 'Nguyen Van A', '1994-10-19 04:34:33', 'Hanoi')";
+                    "VALUES ('1021', 'Nguyen Van A', '1994-10-19 04:34:33', 'Hanoi')";
             int check = statement.executeUpdate(sql);
 
             // Buoc 4: Xu ly ket qua
